@@ -54,7 +54,7 @@ const changePassword = (req,res)=>{
         }else {
             bcrypt.compare(req.headers.oldpassword, response.password, function (err, result){
                 if(result){
-                    bcrypt.hash(req.body.newpassword, 10, function(err, hash1) {
+                    bcrypt.hash(req.headers.newpassword, 10, function(err, hash1) {
                         Admin.updateOne({email:req.headers.email},
                             {
                                 $set: {
